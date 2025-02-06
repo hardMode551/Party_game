@@ -1,0 +1,37 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 800px;
+  
+    h2, h3 {
+      font-size: 50px;
+      font-weight: 300;
+  
+      span {
+        color: #feb96a;
+        font-weight: 600;
+      }
+    }
+  
+    p {
+      font-size: 30px;
+      line-height: 34px;
+      font-weight: 200;
+    }
+  
+    button {
+      font-size: 30px;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  
+    .choice-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+  
