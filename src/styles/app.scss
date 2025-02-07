@@ -1,14 +1,15 @@
+@use "./global.scss";
+@use './variables' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-@import './variables';
-@import "./global.scss";
 
 body {
   font-family: "Inter", serif;
 
-  background: #0F2027;
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $bg-color;
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, $bg-color);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, $bg-color); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   color: $text-color;
 
@@ -25,7 +26,8 @@ body {
   justify-content: center;
 
   max-width: 1920px;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 
   margin: 0 auto;
   
@@ -46,13 +48,13 @@ button {
 
 .app .nav-button {
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 10px;
 
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
 
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 200;
 
   border-radius: 10px;
@@ -61,12 +63,22 @@ button {
   background: #79919b;
 
   cursor: pointer;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  @media screen and (max-width: 480px) {  
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  @media screen and (max-width: 375px) {  
+    font-size: 16px;
+  }
 }
 
 input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: none;
 }

@@ -1,10 +1,61 @@
 .game-selector {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
 
     button {        
-        font-size: 40px;
-        padding: 20px;
+        font-size: 36px;
+        font-weight: 600;
+        padding: 50px 14px;
+    }
+}
+
+/* Большие экраны (1440px и выше) */
+@media screen and (max-width: 1440px) {
+    .game-selector {
+        gap: 8px;
+
+        button {        
+            font-size: 26px;
+            padding: 40px 14px;
+        }
+    }
+}
+
+/* Планшеты (1024px и ниже) */
+@media screen and (max-width: 1024px) {
+    .game-selector {
+        gap: 6px;
+
+        button {        
+            padding: 35px 14px;
+        }
+    }
+}
+
+/* Маленькие планшеты (768px и ниже) */
+@media screen and (max-width: 768px) {
+    .game-selector {
+        button {        
+            font-size: 24px;
+        }
+    }
+}
+
+/* Смартфоны (480px и ниже) */
+@media screen and (max-width: 480px) {
+    .game-selector {
+        button {        
+            font-size: 22px;
+        }
+    }
+}
+
+/* Маленькие смартфоны (375px и ниже) */
+@media screen and (max-width: 375px) {
+    .game-selector {
+        button {        
+            font-size: 20px;
+        }
     }
 }

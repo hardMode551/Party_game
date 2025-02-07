@@ -3,34 +3,323 @@
     flex-direction: column;
     align-items: center;
 
+    max-width: 750px;
+
+    padding: 20px;
+
     h2 {
-        margin-bottom: 20px;
-
-        font-size: 54px;
+        font-size: 50px;
     }
 
-    input[type="number"] {
-        width: 50px;
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-        margin-right: 10px;
-
-        font-size: 30px;
-        padding: 20px;
-    }
-
-    input[type="text"] {
-        margin-bottom: 10px;
-        padding: 20px;
-
-        font-size: 30px;
-    }
-
-    button {
         width: 100%;
 
         margin-top: 20px;
 
-        font-size: 40px;
-        padding: 20px 40px;
+        .player-item {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            width: 100%;
+            
+            border-radius: 6px;
+
+            span {
+                width: 100%;
+
+                background: #f3f3f3;
+                border-radius: 6px;
+
+                padding: 20px;
+                margin-right: 10px;
+                
+                font-size: 26px;
+                text-align: left;
+                color: rgb(17, 17, 17);
+            }
+
+            button.remove {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 64px;
+                height: 64px;
+
+                font-size: 22px;
+
+                color: white;
+                background: #9e5252;
+                background: linear-gradient(138deg, rgb(158, 82, 82) 0%, rgb(158, 82, 82) 100%);
+            }
+        }
+
+        .player-input {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            margin-top: 10px;
+
+            input {
+                width: 100%;
+
+                background: #f3f3f3;
+                border-radius: 6px;
+
+                padding: 20px;
+                margin-right: 10px;
+                
+                font-size: 26px;
+                text-align: left;
+                color: rgb(17, 17, 17);
+            }
+
+            button.add {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 64px;
+                height: 64px;
+
+                color: white;
+                background: #689e52;
+                background: linear-gradient(138deg, rgb(88, 158, 82) 0%, rgb(87, 158, 82) 100%);
+
+                &:disabled {
+                    background: grey;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    .start-button {
+        width: 100%;
+
+        font-size: 32px;
+
+        padding: 20px;
+        margin-top: 40px;
+
+        &:disabled {
+            background: grey;
+            cursor: not-allowed;
+        }
     }
 }
+
+/* --- Медиазапросы --- */
+
+/* Для экранов до 1440px */
+@media screen and (max-width: 1440px) {
+    .player-setup {
+      h2 {
+        font-size: 42px;
+      }
+      .input-container {
+        gap: 8px;
+        .player-item {
+          span {
+            padding: 16px;
+            font-size: 20px;
+            margin-right: 6px;
+          }
+          button.remove {
+            width: 52px;
+            height: 52px;
+            font-size: 18px;
+          }
+        }
+        .player-input {
+          input {
+            padding: 16px;
+            font-size: 20px;
+            margin-right: 6px;
+          }
+          button.add {
+            width: 52px;
+            height: 52px;
+            font-size: 18px;
+          }
+        }
+      }
+      .start-button {
+        font-size: 26px;
+        padding: 16px;
+        margin-top: 30px;
+      }
+    }
+  }
+  
+  /* Для экранов до 1024px */
+  @media screen and (max-width: 1024px) {
+    .player-setup {
+      h2 {
+        font-size: 38px;
+      }
+      .input-container {
+        gap: 8px;
+        .player-item {
+          span {
+            padding: 14px;
+            font-size: 18px;
+            margin-right: 6px;
+          }
+          button.remove {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+          }
+        }
+        .player-input {
+          input {
+            padding: 14px;
+            font-size: 18px;
+            margin-right: 6px;
+          }
+          button.add {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+          }
+        }
+      }
+      .start-button {
+        font-size: 24px;
+        padding: 14px;
+        margin-top: 30px;
+      }
+    }
+  }
+  
+  /* Для экранов до 768px */
+  @media screen and (max-width: 768px) {
+    .player-setup {
+      h2 {
+        font-size: 38px;
+      }
+      .input-container {
+        gap: 6px;
+        .player-item {
+          span {
+            padding: 14px;
+            font-size: 20px;
+            margin-right: 6px;
+          }
+          button.remove {
+            width: 52px;
+            height: 52px;
+            font-size: 16px;
+          }
+        }
+        .player-input {
+          input {
+            padding: 14px;
+            font-size: 20px;
+            margin-right: 6px;
+          }
+          button.add {
+            width: 52px;
+            height: 52px;
+            font-size: 16px;
+          }
+        }
+      }
+      .start-button {
+        font-size: 26px;
+        padding: 14px;
+        margin-top: 25px;
+      }
+    }
+  }
+  
+  /* Для экранов до 480px */
+  @media screen and (max-width: 480px) {
+    .player-setup {
+      h2 {
+        font-size: 34px;
+      }
+      .input-container {
+        gap: 6px;
+        .player-item {
+          span {
+            padding: 12px;
+            font-size: 18px;
+            margin-right: 6px;
+          }
+          button.remove {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+          }
+        }
+        .player-input {
+          input {
+            padding: 12px;
+            font-size: 18px;
+            margin-right: 6px;
+          }
+          button.add {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+          }
+        }
+      }
+      .start-button {
+        font-size: 24px;
+        padding: 12px;
+        margin-top: 20px;
+      }
+    }
+  }
+  
+  /* Для экранов до 375px */
+  @media screen and (max-width: 375px) {
+    .player-setup {
+      h2 {
+        font-size: 30px;
+      }
+      .input-container {
+        gap: 4px;
+        .player-item {
+          span {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 4px;
+          }
+          button.remove {
+            width: 44px;
+            height: 44px;
+            font-size: 14px;
+          }
+        }
+        .player-input {
+          input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 4px;
+          }
+          button.add {
+            width: 44px;
+            height: 44px;
+            font-size: 14px;
+          }
+        }
+      }
+      .start-button {
+        font-size: 20px;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    }
+  }
