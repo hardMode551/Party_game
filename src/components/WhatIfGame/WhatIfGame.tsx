@@ -21,7 +21,7 @@ const WhatIfGame: React.FC<Props> = ({ players, questions }) => {
   return (
     <div className="game-container">
       <h2>
-        <span>{players[playerIndex]},</span> что бы ты сделал?
+        <span>{players[playerIndex]},</span> что бы ты сделал(а)?
       </h2>
       <p>{questions[questionIndex]}</p>
       <button onClick={nextQuestion}>Следующий вопрос</button>

@@ -1,12 +1,34 @@
 .game-selector {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 20px;
 
-    button {        
-        font-size: 36px;
-        font-weight: 600;
-        padding: 50px 14px;
+    padding: 20px;
+
+    .party-game, .solo-game {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        h1 {
+            font-size: 50px;
+            font-weight: 700;
+            
+            margin: 40px 0 20px 0;
+        }
+
+        button {
+            height: 100%;
+
+            font-size: 36px;
+            font-weight: 600;
+
+            width: 100%;
+
+            padding: 50px 14px;
+        }
     }
 }
 
@@ -15,9 +37,17 @@
     .game-selector {
         gap: 8px;
 
-        button {        
-            font-size: 26px;
-            padding: 40px 14px;
+        .party-game, .solo-game {
+            gap: 6px;
+
+            h1 {
+                font-size: 34px;
+            }
+
+            button {        
+                font-size: 26px;
+                padding: 40px 14px;
+            }
         }
     }
 }
@@ -27,8 +57,15 @@
     .game-selector {
         gap: 6px;
 
-        button {        
-            padding: 35px 14px;
+        .party-game, .solo-game {
+            h1 {
+                font-size: 32px;
+            }
+
+            button {        
+                font-size: 24px;
+                padding: 35px 14px;
+            }
         }
     }
 }
@@ -36,8 +73,15 @@
 /* Маленькие планшеты (768px и ниже) */
 @media screen and (max-width: 768px) {
     .game-selector {
-        button {        
-            font-size: 24px;
+        .party-game, .solo-game {
+            h1 {
+                font-size: 22px;
+            }
+
+            button {        
+                font-size: 22px;
+                padding: 30px 14px;
+            }
         }
     }
 }
@@ -45,8 +89,15 @@
 /* Смартфоны (480px и ниже) */
 @media screen and (max-width: 480px) {
     .game-selector {
-        button {        
-            font-size: 22px;
+        .party-game, .solo-game {
+            h1 {
+                font-size: 20px;
+            }
+
+            button {        
+                font-size: 20px;
+                padding: 25px 14px;
+            }
         }
     }
 }
@@ -54,8 +105,15 @@
 /* Маленькие смартфоны (375px и ниже) */
 @media screen and (max-width: 375px) {
     .game-selector {
-        button {        
-            font-size: 20px;
+        .party-game, .solo-game {
+            h1 {
+                font-size: 18px;
+            }
+
+            button {        
+                font-size: 18px;
+                padding: 20px 14px;
+            }
         }
     }
 }

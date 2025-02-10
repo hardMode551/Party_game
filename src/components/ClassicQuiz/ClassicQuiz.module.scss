@@ -1,0 +1,676 @@
+.quizSetup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+
+  .categorySelection {
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: 60px;
+      font-weight: 00;
+      margin-bottom: 30px;
+    }
+
+    .categoryButton {
+      font-size: 34px;
+      font-weight: 500;
+
+      padding: 20px 30px;
+      margin: 5px;
+
+      transition: background-color 0.3s ease;
+
+      &.selected {
+        background: #8f1f57;
+      }
+    }
+  }
+
+  .timeMode {
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 26px;
+      font-weight: 200;
+
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 8px;
+
+        width: 40px;
+        height: 40px;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  .startButton {
+    font-size: 30px;
+    font-weight: 500;
+
+    padding: 20px 30px;
+    margin: 5px;
+
+    transition: background-color 0.3s ease;
+
+    &:disabled {
+      background: #ccc;
+      color: #808080;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.quizContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+
+  max-width: 900px;
+
+  .progressContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .questionCounter {
+      font-size: 24px;
+      font-weight: 600;
+      margin-right: 15px;
+    }
+
+    .progressBar {
+      flex-grow: 1;
+      height: 12px;
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      transition: width 0.3s ease-in-out;
+    }
+  }
+
+  h2 {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 100%;
+
+    .optionButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+
+      font-size: 28px;
+      font-weight: 500;
+
+      padding: 34px 20px;
+
+      transition: all 0.3s ease;
+
+      &.correct {
+        background: #28a745;
+        color: white;
+      }
+
+      &.incorrect {
+        background: #dc3545;
+        color: white;
+        border-color: #a71d2a;
+      }
+    }
+  }
+
+  .timerContainer {
+    position: relative;
+
+    width: 100%;
+    height: 30px;
+
+    background-color: #ddd;
+    border-radius: 15px;
+
+    overflow: hidden;
+    margin-top: 20px;
+
+    .timerBar {
+      height: 100%;
+      background: linear-gradient(to right, #ff6f61, #ff4500);
+      transition: width 1s linear;
+    }
+  }
+
+  .feedback {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+
+  .feedbackCorrect {
+    color: #28a745;
+  }
+
+  .feedbackIncorrect {
+    color: #dc3545;
+  }
+}
+
+.quizResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+
+  h2 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 30px;
+    font-weight: 200;
+
+    margin-bottom: 40px;
+  }
+
+  .retryButton {
+    font-size: 28px;
+    font-weight: 500;
+
+    padding: 20px 30px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .quizSetup {
+    .categorySelection {
+      margin-bottom: 30px;
+
+      h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      .categoryButton {
+        font-size: 24px;
+
+        padding: 20px 20px;
+      }
+    }
+
+    .timeMode {
+      margin-bottom: 10px;
+
+      h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-size: 20px;
+        font-weight: 200;
+
+        input {
+          margin-right: 8px;
+
+          width: 30px;
+          height: 30px;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    .startButton {
+      font-size: 20px;
+
+      padding: 20px 20px;
+    }
+  }
+
+  .quizContainer {
+    max-width: 600px;
+
+    .progressContainer {
+      .questionCounter {
+        font-size: 20px;
+      }
+
+      .progressBar {
+        height: 8px;
+      }
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .options {
+      gap: 8px;
+
+      .optionButton {
+        font-size: 20px;
+        padding: 28px 20px;
+      }
+    }
+
+    .timerContainer {
+      height: 15px;
+    }
+
+    .feedback {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  }
+
+  .quizResult {
+    h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+
+    .retryButton {
+      font-size: 22px;
+
+      padding: 20px 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .quizSetup {
+    .categorySelection {
+      margin-bottom: 25px;
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 18px;
+      }
+
+      .categoryButton {
+        font-size: 22px;
+        padding: 20px 20px;
+      }
+    }
+
+    .timeMode {
+      margin-bottom: 8px;
+
+      h2 {
+        font-size: 24px;
+      }
+
+      label {
+        font-size: 18px;
+
+        input {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .startButton {
+      font-size: 18px;
+      padding: 20px 20px;
+    }
+  }
+
+  .quizContainer {
+    max-width: 500px;
+
+    .progressContainer {
+      .questionCounter {
+        font-size: 18px;
+      }
+
+      .progressBar {
+        height: 6px;
+      }
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .options {
+      gap: 6px;
+
+      .optionButton {
+        font-size: 18px;
+        padding: 20px 20px;
+      }
+    }
+
+    .timerContainer {
+      height: 12px;
+    }
+
+    .feedback {
+      font-size: 18px;
+      margin-top: 8px;
+    }
+  }
+
+  .quizResult {
+    h2 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .retryButton {
+      font-size: 20px;
+      padding: 20px 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quizSetup {
+    padding: 15px;
+
+    .categorySelection {
+      margin-bottom: 20px;
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+      }
+
+      .categoryButton {
+        font-size: 20px;
+        padding: 20px 20px;
+      }
+    }
+
+    .timeMode {
+      margin-bottom: 6px;
+
+      h2 {
+        font-size: 20px;
+      }
+
+      label {
+        font-size: 16px;
+
+        input {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .startButton {
+      font-size: 16px;
+      padding: 20px 20px;
+    }
+  }
+
+  .quizContainer {
+    max-width: 400px;
+
+    .progressContainer {
+      .questionCounter {
+        font-size: 16px;
+      }
+
+      .progressBar {
+        height: 5px;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      gap: 4px;
+
+      .optionButton {
+        font-size: 16px;
+        padding: 20px 15px;
+      }
+    }
+
+    .timerContainer {
+      height: 10px;
+    }
+
+    .feedback {
+      font-size: 16px;
+      margin-top: 6px;
+    }
+  }
+
+  .quizResult {
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .retryButton {
+      font-size: 18px;
+      padding: 20px 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quizSetup {
+    padding: 10px;
+
+    .categorySelection {
+      margin-bottom: 35px;
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+
+      .categoryButton {
+        font-size: 18px;
+        padding: 20px 20px;
+      }
+    }
+
+    .timeMode {
+      h2 {
+        font-size: 18px;
+      }
+
+      label {
+        font-size: 14px;
+
+        input {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .startButton {
+      font-size: 14px;
+      padding: 20px 20px;
+    }
+  }
+
+  .quizContainer {
+    max-width: 350px;
+
+    .progressContainer {
+      .questionCounter {
+        font-size: 14px;
+      }
+
+      .progressBar {
+        height: 4px;
+      }
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .options {
+      .optionButton {
+        font-size: 14px;
+        padding: 18px 20px;
+      }
+    }
+
+    .timerContainer {
+      height: 8px;
+    }
+
+    .feedback {
+      font-size: 14px;
+    }
+  }
+
+  .quizResult {
+    h2 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .retryButton {
+      font-size: 16px;
+      padding: 20px 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .quizSetup {
+    padding: 8px;
+
+    .categorySelection {
+      h1 {
+        font-size: 24px;
+      }
+
+      .categoryButton {
+        font-size: 16px;
+        padding: 16px 20px;
+      }
+    }
+
+    .timeMode {
+      h2 {
+        font-size: 16px;
+      }
+
+      label {
+        font-size: 12px;
+
+        input {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    .startButton {
+      font-size: 12px;
+      padding: 16px 20px;
+    }
+  }
+
+  .quizContainer {
+    max-width: 320px;
+
+    .progressContainer {
+      .questionCounter {
+        font-size: 12px;
+      }
+
+      .progressBar {
+        height: 3px;
+      }
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .options {
+      .optionButton {
+        font-size: 12px;
+        padding: 16px 20px;
+      }
+    }
+
+    .timerContainer {
+      height: 6px;
+    }
+
+    .feedback {
+      font-size: 12px;
+    }
+  }
+
+  .quizResult {
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .retryButton {
+      font-size: 14px;
+      padding: 16px 10px;
+    }
+  }
+}

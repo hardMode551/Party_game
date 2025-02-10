@@ -34,12 +34,17 @@ body {
   text-align: center;
 }
 
-
+.app {
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: $text-shadow;
+  }
+}
 
 button {
   background: #9e529c;
   background: linear-gradient(138deg, rgba(158,82,156,1) 0%, rgba(158,128,82,1) 100%);
   color: $text-color;
+  text-shadow: $text-shadow;
 
   border-radius: 10px;
   border: none;
@@ -61,6 +66,7 @@ button {
 
   color: #ffffff;
   background: #79919b;
+  text-shadow: $text-shadow;
 
   cursor: pointer;
 

@@ -1,30 +1,50 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
 import WhatIfGame from "../WhatIfGame/WhatIfGame";
 import TruthOrDareGame from "../TruthOrDareGame/TruthOrDareGame";
+import ClassicQuiz from "../ClassicQuiz/ClassicQuiz";
 import { questionsByGameType } from "../../data/questions";
+import { categories } from "../../data/quizCategories";
 
 interface Props {
   players: string[];
+  gameType: string;
 }
 
-const GameWrapper: React.FC<Props> = ({ players }) => {
-  const [searchParams] = useSearchParams();
-  const gameType = searchParams.get("type") || "questions";
+interface GameComponentConfig {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: React.FC<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getProps: (players: string[]) => any;
+}
 
-  if (gameType === "truth_or_dare") {
-    return (
-        <TruthOrDareGame
-        players={players}
-        truth={questionsByGameType.truth_or_dare.truth || []}
-        dare={questionsByGameType.truth_or_dare.dare || []}
-      />
-      
-    );
+const gameComponentMap: Record<string, GameComponentConfig> = {
+  questions: {
+    component: WhatIfGame,
+    getProps: (players: string[]) => ({
+      players,
+      questions: questionsByGameType.questions.questions || []
+    })
+  },
+  truth_or_dare: {
+    component: TruthOrDareGame,
+    getProps: (players: string[]) => ({
+      players,
+      truth: questionsByGameType.truth_or_dare.truth || [],
+      dare: questionsByGameType.truth_or_dare.dare || []
+    })
+  },
+  quiz: {
+    component: ClassicQuiz,
+    getProps: () => ({
+      categories: categories
+    })
   }
+};
 
-  return <WhatIfGame players={players} questions={questionsByGameType.questions.questions || []} />
-  ;
+const GameWrapper: React.FC<Props> = ({ players, gameType }) => {
+  const config = gameComponentMap[gameType] || gameComponentMap["questions"];
+  const Component = config.component;
+  return <Component {...config.getProps(players)} />;
 };
 
 export default GameWrapper;
