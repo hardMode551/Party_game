@@ -17,6 +17,7 @@ const GameSelector: React.FC<GameSelectorProps> = ({ onSelect }) => {
           Правда или действие
         </button>
       </div>
+      <div className={styles["divider"]} />
       <div className={styles["solo-game"]}>
         <h1>Одиночные игры</h1>
         <button onClick={() => onSelect("quiz")}>
