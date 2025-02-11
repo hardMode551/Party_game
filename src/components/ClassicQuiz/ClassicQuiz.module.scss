@@ -191,6 +191,8 @@
 
   padding: 20px;
 
+  max-height: 60vh;
+
   h2 {
     font-size: 52px;
     font-weight: 700;
@@ -202,6 +204,107 @@
     font-weight: 200;
 
     margin-bottom: 40px;
+  }
+
+  .expandButton {
+    display: flex;
+    align-items: center;
+
+    background: inherit;
+    margin-top: 20px;
+
+    font-size: 22px;
+    font-weight: 500;
+
+    padding: 20px;
+
+    svg {
+      margin-right: 10px;
+
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .answerList {
+    margin-top: 15px;
+    padding: 10px;
+
+    border-radius: 8px;
+
+    .answerItem {
+      margin-bottom: 30px;
+      padding: 20px;
+
+      max-width: 900px;
+
+      background-color: #426b7c;
+      border-radius: 8px;
+
+      h3 {
+        font-size: 40px;
+        font-weight: 500;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        margin-top: 20px;
+
+        li {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          padding: 20px;
+
+          font-size: 30px;
+          font-weight: 400;
+
+          background-color: #d6d6d6;
+          color: rgb(26, 25, 25);
+        }
+
+        .correctAnswer {
+          color: #289842;
+          background: #b6e2a1;
+
+          font-weight: 700;
+        
+          &::before {
+            content: 'Правильный ответ:';
+            font-weight: 900;
+          }
+        }
+    
+        .selectedAnswer {
+          color: #982828;
+          background: #f3c4c4;
+
+          font-weight: 700;
+        
+          &::before {
+            content: 'Ваш ответ:';
+            font-weight: 900;
+          }
+        }
+
+        .correctAndSelectedAnswer {
+          color: #289842;
+          background: #b6e2a1;
+
+          font-weight: 700;
+
+
+          &::before {
+            content: 'Вы ответили правильно:';
+            font-weight: 900;
+          }
+        }
+      }
+    }
   }
 
   .retryButton {
@@ -307,6 +410,55 @@
       font-size: 22px;
     }
 
+    .expandButton {
+      margin-top: 15px;
+      padding: 10px;
+  
+      font-size: 18px;
+  
+      svg {
+        margin-right: 6px;
+  
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .answerList {
+      margin-top: 10px;
+  
+      .answerItem {
+        margin-bottom: 30px;
+        padding: 15px;
+  
+        max-width: 700px;
+  
+        background-color: #426b7c;
+        border-radius: 8px;
+  
+        h3 {
+          font-size: 28px;
+          font-weight: 500;
+        }
+  
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+  
+          margin-top: 20px;
+  
+          li {
+            gap: 15px;
+  
+            padding: 10px;
+  
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    
     .retryButton {
       font-size: 22px;
 
@@ -398,6 +550,40 @@
 
     p {
       font-size: 20px;
+    }
+
+    .expandButton {
+      padding: 8px;
+      font-size: 16px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .answerList {
+      padding: 8px;
+
+      .answerItem {
+        padding: 12px;
+        margin-bottom: 20px;
+
+        max-width: 600px;
+
+        h3 {
+          font-size: 24px;
+        }
+
+        ul {
+          gap: 6px;
+
+          li {
+            font-size: 18px;
+            padding: 8px;
+          }
+        }
+      }
     }
 
     .retryButton {
@@ -494,6 +680,40 @@
       font-size: 18px;
     }
 
+    .expandButton {
+      padding: 6px;
+      font-size: 14px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .answerList {
+      padding: 6px;
+
+      .answerItem {
+        padding: 10px;
+        margin-bottom: 16px;
+
+        max-width: 500px;
+
+        h3 {
+          font-size: 22px;
+        }
+
+        ul {
+          gap: 5px;
+          
+          li {
+            font-size: 16px;
+            padding: 6px;
+          }
+        }
+      }
+    }
+
     .retryButton {
       font-size: 18px;
       padding: 20px 20px;
@@ -583,6 +803,40 @@
       font-size: 16px;
     }
 
+    .expandButton {
+      padding: 4px;
+      font-size: 12px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .answerList {
+      padding: 4px;
+
+      .answerItem {
+        padding: 8px;
+        margin-bottom: 14px;
+
+        max-width: 400px;
+
+        h3 {
+          font-size: 20px;
+        }
+
+        ul {
+          gap: 4px;
+
+          li {
+            font-size: 14px;
+            padding: 5px;
+          }
+        }
+      }
+    }
+
     .retryButton {
       font-size: 16px;
       padding: 20px 20px;
@@ -666,6 +920,40 @@
 
     p {
       font-size: 14px;
+    }
+
+    .expandButton {
+      padding: 3px;
+      font-size: 10px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .answerList {
+      padding: 3px;
+
+      .answerItem {
+        padding: 6px;
+        margin-bottom: 12px;
+
+        max-width: 320px;
+
+        h3 {
+          font-size: 18px;
+        }
+
+        ul {
+          gap: 3px;
+
+          li {
+            font-size: 12px;
+            padding: 4px;
+          }
+        }
+      }
     }
 
     .retryButton {

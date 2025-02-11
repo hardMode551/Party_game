@@ -19,6 +19,15 @@ const ClassicQuiz: React.FC<ClassicQuizProps> = ({ categories }) => {
   const [timeLeft, setTimeLeft] = useState<number>(TIME_LIMIT);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
+  const [userAnswers, setUserAnswers] = useState<
+    {
+      question: string;
+      userAnswer: string | null;
+      correctAnswer: string;
+      options: string[];
+    }[]
+  >([]);
+  const [answersExpanded, setAnswersExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     if (stage === "quiz" && timedMode && timeLeft > 0 && !showFeedback) {
@@ -38,8 +47,17 @@ const ClassicQuiz: React.FC<ClassicQuizProps> = ({ categories }) => {
       setScore(0);
       setTimeLeft(TIME_LIMIT);
       setSelectedOption(null);
+      setUserAnswers([]);
     }
   };
+
+  const currentQuestion = selectedCategory?.questions[currentQuestionIndex];
+
+   // Перемешивание массива
+   const shuffledOptions = React.useMemo(() => {
+    if (!currentQuestion) return [];
+    return [...currentQuestion.options].sort(() => Math.random() - 0.5);
+  }, [currentQuestionIndex, selectedCategory]);
 
   const handleSubmitAnswer = (option: string | null) => {
     if (!selectedCategory) return;
@@ -47,6 +65,15 @@ const ClassicQuiz: React.FC<ClassicQuizProps> = ({ categories }) => {
     const correct = option === currentQuestion.answer;
     if (correct) setScore(score + 1);
     setSelectedOption(option);
+    setUserAnswers((prev) => [
+      ...prev,
+      {
+        question: currentQuestion.question,
+        userAnswer: option,
+        correctAnswer: currentQuestion.answer,
+        options: currentQuestion.options,
+      },
+    ]);
     setShowFeedback(true);
     setTimeout(() => {
       setShowFeedback(false);
@@ -124,7 +151,7 @@ const ClassicQuiz: React.FC<ClassicQuizProps> = ({ categories }) => {
 
         <h2>{currentQuestion.question}</h2>
         <div className={styles.options}>
-          {currentQuestion.options.map((option, index) => (
+          {shuffledOptions.map((option, index) => (
             <button
               key={index}
               onClick={() => handleSubmitAnswer(option)}
@@ -177,6 +204,70 @@ const ClassicQuiz: React.FC<ClassicQuizProps> = ({ categories }) => {
         >
           Попробовать снова
         </button>
+        {/* Кнопка для раскрытия списка */}
+        <button
+          className={styles.expandButton}
+          onClick={() => setAnswersExpanded(!answersExpanded)}
+        >
+          <svg
+            width="64px"
+            height="64px"
+            viewBox="0 0 1024 1024"
+            className="icon"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+            style={{
+              transform: answersExpanded ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M917.333333 364.8L851.2 298.666667 512 637.866667 172.8 298.666667 106.666667 364.8 512 768z"
+                fill="#2196F3"
+              ></path>
+            </g>
+          </svg>
+          {answersExpanded ? "Скрыть ответы" : "Показать подробные ответы"}
+        </button>
+
+        {/* Разворачиваемый список ответов */}
+        {answersExpanded && (
+          <div className={styles.answerList}>
+            {userAnswers.map((entry, index) => (
+              <div key={index} className={styles.answerItem}>
+                <h3>{entry.question}</h3>
+                <ul>
+                  {entry.options.map((option, i) => {
+                    const isCorrect = option === entry.correctAnswer;
+                    const isUserAnswer = option === entry.userAnswer;
+                    const isCorrectAndSelected = isCorrect && isUserAnswer;
+
+                    return (
+                      <li
+                        key={i}
+                        className={`
+          ${styles.answerOption} 
+          ${isCorrectAndSelected ? styles.correctAndSelectedAnswer : ""}
+          ${!isCorrectAndSelected && isCorrect ? styles.correctAnswer : ""}
+          ${!isCorrectAndSelected && isUserAnswer ? styles.selectedAnswer : ""}
+        `}
+                      >
+                        {option}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
